@@ -1,0 +1,36 @@
+steps:
+- name: 'hashicorp/terraform:1.0.0'
+  id: 'Init'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      echo "Terraform Initialization"
+      terraform init
+
+- name: 'hashicorp/terraform:1.0.0'
+  id: 'Build'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      echo "Terraform Plan"
+      terraform plan
+
+- name: 'hashicorp/terraform:1.0.0'
+  id: 'Code Quality'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      echo "Terraform format and Validate"
+      terraform fmt && terraform validate
+
+- name: 'hashicorp/terraform:1.0.0'
+  id: 'Deploy'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
+      echo "$BRANCH_NAME - Terraform Apply"
+      terraform apply -auto-approve
