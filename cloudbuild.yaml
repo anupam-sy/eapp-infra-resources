@@ -4,7 +4,8 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - | 
+  - |
+      echo "GitHub Branch: $BRANCH_NAME"
       echo "Terraform Initialization"
       terraform init
 
@@ -27,10 +28,10 @@ steps:
       terraform fmt && terraform validate
 
 - name: 'hashicorp/terraform:1.0.0'
-  id: 'Deploy'
+  id: 'Destroy'
   entrypoint: 'sh'
   args: 
   - '-c'
   - |
-      echo "$BRANCH_NAME - Terraform Apply"
-      terraform apply -auto-approve
+      echo "Terraform Destroy"
+      terraform destroy -auto-approve
