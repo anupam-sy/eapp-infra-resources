@@ -12,5 +12,6 @@ terraform {
   backend "gcs" {
     bucket      = "mgcp-tf-states"
     prefix      = "terraform/states/dev/"
+    impersonate_service_account = "terraform-manual-sa@clear-tape-374908.iam.gserviceaccount.com"
   }
 }
