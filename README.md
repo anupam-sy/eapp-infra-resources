@@ -5,13 +5,13 @@ This repository contains Terraform code for Individual Resource deployment on Go
 Below prerequisites must be fulfilled for successfull execution of code.
 
 ### Software Requirement:
-Resources in this repository are meant for use with Terraform 1.0.0 (Check the version using `terraform --version`). If you don't have the compatible version, download it from official Terraform repository.
+Resources in this repository are meant for use with Terraform 1.3.6 (Check the version using `terraform --version`). If you don't have the compatible version, download it from official Terraform repository.
 
 -   [gcloud sdk](https://cloud.google.com/sdk/install) >= 332.0.0
--   [Terraform](https://www.terraform.io/downloads.html) >= 1.0.0
--   [terraform-provider-google] plugin = 3.60.0
--   [terraform-provider-google-beta] plugin = 3.60.0
--   [terraform-provider-random] plugin = 3.0.0
+-   [Terraform](https://www.terraform.io/downloads.html) >= 1.3.6
+-   [terraform-provider-google] plugin = 4.52.0
+-   [terraform-provider-google-beta] plugin = 4.52.0
+-   [terraform-provider-random] plugin = 3.4.0
 
 ### Permissions Requirement:
 In order to execute these templates you must have a Service Account with the following roles. Access can be more fine-grained to follow Principle of least privilege (PoLP).
