@@ -1,37 +1,39 @@
+# The image used in the cloud build steps is the official terraform image released by HashiCorp, Inc. over Dokcer Hub Registry.
+
 steps:
-- name: 'hashicorp/terraform:1.0.0'
+- name: 'hashicorp/terraform:1.3.6'
   id: 'Init'
   entrypoint: 'sh'
   args: 
   - '-c'
   - |
-      echo "GitHub Branch: $BRANCH_NAME"
-      echo "Terraform Initialization"
+      echo "*** Branch Name: $BRANCH_NAME ***"
+      echo "*** Terraform Initialization ***"
       terraform init
 
-- name: 'hashicorp/terraform:1.0.0'
+- name: 'hashicorp/terraform:1.3.6'
   id: 'Build'
   entrypoint: 'sh'
   args: 
   - '-c'
   - | 
-      echo "Terraform Plan"
+      echo "*** Terraform Plan ***"
       terraform plan
 
-- name: 'hashicorp/terraform:1.0.0'
+- name: 'hashicorp/terraform:1.3.6'
   id: 'Code Quality'
   entrypoint: 'sh'
   args: 
   - '-c'
   - | 
-      echo "Terraform format and Validate"
+      echo "*** Terraform format and Validate ***"
       terraform fmt && terraform validate
 
-- name: 'hashicorp/terraform:1.0.0'
-  id: 'Destroy'
+- name: 'hashicorp/terraform:1.3.6'
+  id: 'Apply'
   entrypoint: 'sh'
   args: 
   - '-c'
   - |
-      echo "Terraform Destroy"
-      terraform destroy -auto-approve
+      echo "*** Terraform Apply ***"
+      terraform apply -auto-approve
