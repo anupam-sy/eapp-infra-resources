@@ -33,8 +33,8 @@ variable "terraform_service_account" {
 # Variable Declaration - IaaS (VPC Network, SubNetwork, Cloud VPN, GCE)
 
 variable "vpc_name" {
-  type = string
-  description = "The name of the VPC"
+  type = list(string)
+  description = "List of the names of the VPC"
 }
 
 variable "subnet_name" {
