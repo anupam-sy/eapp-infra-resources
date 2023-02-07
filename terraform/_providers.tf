@@ -1,19 +1,19 @@
-# Provider block to configure GCP Provider 
-provider "google" {
-  project = var.project_id
-  # If another region/zone is specified in a resource configuration, that will take precedence.
-  region  = var.resource_region
+# Locals block to hold and modify the values
+locals {
+  tf_sa = var.terraform_service_account
 }
 
-/*
-To use the google-beta provider, simply set the provider field on each resource where you want to 
-use google-beta. If the provider field is omitted, Terraform will implicitly use the google provider
-by default even if you have only defined a google-beta provider block.
-Terraform recommends that you set provider = google even though it is the default, for clarity.
-*/
+# Provider block to configure GCP Provider credential configuration
+provider "google" {
+  // The service account to impersonate for all Google API Calls.
+  // # Make sure to give "roles/iam.serviceAccountTokenCreator" role to an identity 
+  // (who will trigger the terraform code) on this service account for the impersonation to succeed.
 
+  impersonate_service_account = local.tf_sa
+}
+
+# Provider block to configure GCP Provider credential configuration
 provider "google-beta" {
-  project = var.project_id
-  # If another region/zone is specified in a resource configuration, that will take precedence.
-  region  = var.resource_region 
+  // The service account to impersonate for all Google API Calls.
+  impersonate_service_account = local.tf_sa
 }
