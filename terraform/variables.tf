@@ -27,7 +27,7 @@ variable "resource_labels" {
 variable "terraform_service_account" {
   type        = string
   description = "Terraform service account to execute the terraform code."
-  # Make sure to give "roles/iam.serviceAccountTokenCreator" role to any identity who will trigger the terraform code.
+  # Make sure to give "roles/iam.serviceAccountTokenCreator" role to an identity (who will trigger the terraform code) on this service account for the impersonation to succeed.
 }
 
 # Variable Declaration - IaaS (VPC Network, SubNetwork, Cloud VPN, GCE)
