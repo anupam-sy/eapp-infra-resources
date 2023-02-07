@@ -9,6 +9,7 @@ steps:
   - |
       echo "*** Branch Name: $BRANCH_NAME ***"
       echo "*** Terraform Initialization ***"
+      cd terraform
       terraform init
 
 - name: 'hashicorp/terraform:1.3.6'
@@ -18,6 +19,7 @@ steps:
   - '-c'
   - | 
       echo "*** Terraform Plan ***"
+      cd terraform
       terraform plan
 
 - name: 'hashicorp/terraform:1.3.6'
@@ -27,6 +29,7 @@ steps:
   - '-c'
   - | 
       echo "*** Terraform format and Validate ***"
+      cd terraform
       terraform fmt && terraform validate
 
 - name: 'hashicorp/terraform:1.3.6'
@@ -36,4 +39,5 @@ steps:
   - '-c'
   - |
       echo "*** Terraform Apply ***"
+      cd terraform
       terraform apply -auto-approve
