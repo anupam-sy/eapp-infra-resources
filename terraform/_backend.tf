@@ -10,7 +10,7 @@
 # Configure Google Cloud Storage (GCS) Backend for Google Cloud Provider
 terraform {
   backend "gcs" {
-    bucket      = "foundation-tfstates"
-    prefix      = "workload-dev"
+    bucket      = "mgcp-tf-states"
+    prefix      = "terraform/states/dev/"
   }
 }
