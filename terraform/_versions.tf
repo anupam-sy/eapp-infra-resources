@@ -1,19 +1,19 @@
 # Terraform block to configure Terraform and Provider Version
 terraform {
-  required_version = "~> 1.0.0" # To allow upgrade of 1.0.x versions.
+  required_version = ">= 1.3.6"
 
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 3.60.0"
+      version = "~> 4.52.0"
     }
     google-beta = {
       source  = "hashicorp/google-beta"
-      version = "~> 3.60.0"
+      version = "~> 4.52.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.0.0"
+      version = "3.4.3"
     }
   }
 }
