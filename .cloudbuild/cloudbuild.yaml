@@ -44,4 +44,4 @@ steps:
 
 logsBucket: 'gs://mgcp-tf-cloudbuild-logs'
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logging: GCS_ONLY
