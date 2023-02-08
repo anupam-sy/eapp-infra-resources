@@ -42,6 +42,8 @@ steps:
       cd terraform
       terraform apply -auto-approve
 
+# If user specified service account is used to run the build trigger, the build must either - 
+# (a) specify GCS_ONLY with gcs bucket url (b) use CLOUD_LOGGING_ONLY logging option, or (c) use the NONE logging option
 logsBucket: 'gs://mgcp-tf-cloudbuild-logs'
 options:
   logging: GCS_ONLY
