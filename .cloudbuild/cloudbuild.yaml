@@ -41,3 +41,7 @@ steps:
       echo "*** Terraform Apply ***"
       cd terraform
       terraform apply -auto-approve
+
+logsBucket: 'gs://mgcp-tf-cloudbuild-logs'
+options:
+  logging: CLOUD_LOGGING_ONLY
