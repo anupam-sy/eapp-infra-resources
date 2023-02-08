@@ -1,7 +1,7 @@
 # Terraform Code Sets
 This repository contains Terraform code for Individual Resource deployment on Google Public Cloud.
 
-## Prerequisites:
+## Prerequisites
 Below prerequisites must be fulfilled for successfull execution of code.
 
 ### Software Requirement:
