@@ -10,8 +10,8 @@
 # Configure Google Cloud Storage (GCS) Backend for Google Cloud Provider
 terraform {
   backend "gcs" {
-    bucket      = "mgcp-tf-states"
-    prefix      = "terraform/states/dev/"
+    bucket = "mgcp-tf-states"
+    prefix = "terraform/states/dev/"
     // impersonate_service_account = "terraform-manual-sa@clear-tape-374908.iam.gserviceaccount.com"
   }
 }

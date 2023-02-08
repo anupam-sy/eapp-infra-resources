@@ -7,7 +7,7 @@ locals {
 provider "google" {
   // configure the default project and region.
   project = var.project_id
-  region = var.resource_region
+  region  = var.resource_region
 
   // The service account to impersonate for all Google API Calls.
   // # Make sure to give "roles/iam.serviceAccountTokenCreator" role to an identity 
@@ -20,7 +20,7 @@ provider "google" {
 provider "google-beta" {
   // configure the default project and region.
   project = var.project_id
-  region = var.resource_region
+  region  = var.resource_region
 
   // The service account to impersonate for all Google API Calls.
   impersonate_service_account = local.tf_sa

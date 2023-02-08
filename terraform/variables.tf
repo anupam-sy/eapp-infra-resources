@@ -1,22 +1,22 @@
 # Variable Declaration - Project, Region, Zone, Labels
 
 variable "project_id" {
-  type = string
+  type        = string
   description = "The project ID to host the resources"
 }
 
 variable "resource_region" {
-  type = string
+  type        = string
   description = "The region to host the resources"
 }
 
 variable "resource_zone" {
-  type = string
-  description = "The zone to host the resources"  
+  type        = string
+  description = "The zone to host the resources"
 }
 
 variable "resource_labels" {
-  type = map(string)
+  type        = map(string)
   description = "Map of labels to be associated with resources"
   default = {
     "env"     = "dev"
@@ -33,16 +33,16 @@ variable "terraform_service_account" {
 # Variable Declaration - IaaS (VPC Network, SubNetwork, Cloud VPN, GCE)
 
 variable "vpc_name" {
-  type = list(string)
+  type        = list(string)
   description = "List of the names of the VPC"
 }
 
 variable "subnet_name" {
-  type = list(string)
+  type        = list(string)
   description = "List of subnet names to be housed in VPC"
 }
 
 variable "subnet_cidr" {
-  type = list(string)
+  type        = list(string)
   description = "List of subnet CIDRs to be housed in VPC"
 }
