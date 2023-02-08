@@ -41,3 +41,6 @@ steps:
       echo "*** Terraform Apply ***"
       cd terraform
       terraform apply -auto-approve
+
+options:
+  logging: CLOUD_LOGGING_ONLY
