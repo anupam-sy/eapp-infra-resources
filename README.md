@@ -34,6 +34,15 @@ To use a remote backend, create a GCS Bucket and set the versioning. Use below g
 	gsutil mb -c standard -l eu gs://bucket-name
 	gsutil versioning set on gs://bucket-name
 
+## Create cloud build trigger
+If you are using the user-specified service account to create build trigger, You must create or start builds in the command line using 'gcloud builds submit' or 'gcloud beta builds triggers create'.
+
+```
+gcloud builds triggers create github --name="terraform-gcp-lab-trigger" --service-account="projects/clear-tape-374908/serviceAccounts/terraform-manual-sa@clear-tape-374908.iam.gserviceaccount.com" --repo-owner="anupam-sy" --repo-name="terraform-gcp-lab" --description="terraform-gcp-lab" --branch-pattern="^master$" --build-config=".cloudbuild/cloudbuild.yaml"
+```
+
+Note: To use the Triggers page in the Google Cloud console, the user-specified service account and the build trigger must be in the same project.
+
 ## Execution:
 For multiple environment provisioning, use different tfstate files in backend. To execute the Terraform code, go to command prompt and then run the following commands:
 
@@ -56,4 +65,5 @@ For multiple environment provisioning, use different tfstate files in backend. T
     -   The terraform destroy command is used to destory the resources defined in your Terraform configuration. To delete the specific resource, use the "target" option with destroy command.
 
 ## Reference: 
-> https://github.com/GoogleCloudPlatform/solutions-terraform-cloudbuild-gitops
+- https://github.com/GoogleCloudPlatform/solutions-terraform-cloudbuild-gitops
+- https://cloud.google.com/build/docs/securing-builds/configure-user-specified-service-accounts
