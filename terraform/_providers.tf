@@ -3,25 +3,44 @@ locals {
   tf_sa = var.terraform_service_account
 }
 
-# Provider block to configure GCP Provider credential configuration
+provider "google" {
+  alias = "tokengen"
+}
+
+data "google_service_account_access_token" "default" {
+  provider               = google.tokengen
+  target_service_account = local.tf_sa
+
+  // To see, edit, configure, and delete your Google Cloud data
+  scopes                 = ["https://www.googleapis.com/auth/cloud-platform"]
+  lifetime               = "600s"
+}
+
+/******************************************
+  GA Provider credential configuration
+ *****************************************/
+
 provider "google" {
   // configure the default project and region.
   project = var.project_id
   region  = var.resource_region
 
-  // The service account to impersonate for all Google API Calls.
-  // # Make sure to give "roles/iam.serviceAccountTokenCreator" role to an identity 
-  // (who will trigger the terraform code) on this service account for the impersonation to succeed.
-
-  impersonate_service_account = local.tf_sa
+  // A temporary OAuth 2.0 access token obtained from the Google Authorization server
+  // used to authenticate HTTP requests to GCP APIs.
+  access_token = data.google_service_account_access_token.default.access_token
 }
 
-# Provider block to configure GCP Provider credential configuration
+/******************************************
+  Beta Provider credential configuration
+ *****************************************/
+
 provider "google-beta" {
   // configure the default project and region.
   project = var.project_id
   region  = var.resource_region
 
-  // The service account to impersonate for all Google API Calls.
-  impersonate_service_account = local.tf_sa
+  // A temporary OAuth 2.0 access token obtained from the Google Authorization server
+  // used to authenticate HTTP requests to GCP APIs.
+  access_token = data.google_service_account_access_token.default.access_token
 }
+
